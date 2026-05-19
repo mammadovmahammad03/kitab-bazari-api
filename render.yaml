@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: kitab-bazari-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_DB
+        value: kitab_bazari
+      - key: JWT_KEY
+        generateValue: true
+      - key: JWT_ISSUER
+        value: KitabBazari
+      - key: JWT_AUDIENCE
+        value: KitabBazariMobile

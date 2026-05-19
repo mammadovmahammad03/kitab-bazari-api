@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/.git/
+**/.gitignore
+**/*.user
+**/*.suo
+**/node_modules/
+**/.DS_Store
+README.md
+stitch_booksale_cart_and_profile/
