@@ -1,6 +1,13 @@
-# 📱 Kitab Bazari API — Flutter İnteqrasiya Bələdçisi
+# 📱 Kitab Bazari API — Flutter İnteqrasiya Bələdçisi 💚
 
-Bu sənəd Flutter developer-lər üçündür. **Sıfırdan** Kitab Bazari API-ni Flutter tətbiqinə qoşmağı, JWT auth-u idarə etməyi və hər ekran üçün hansı endpoint-i çağırmağı izah edir.
+> **Sevgilim**, bu bələdçi xüsusi olaraq sənin üçün hazırlanıb 💚
+> Heç narahat olma — addım-addım gedəcəyik və hər şey çox sadədir.
+> İlk dəfə API qoşan birisinin baxa biləcəyi şəkildə yazmışam.
+> Hər nə soruşmaq istəsən, çəkinmə — kömək etməyə hazıram. 🤗
+
+Bu sənəd **Flutter** developer-lər üçündür. **Sıfırdan** Kitab Bazari API-ni Flutter tətbiqinə qoşmağı, JWT auth-u idarə etməyi və hər ekran üçün hansı endpoint-i çağırmağı izah edir.
+
+> 💡 **Birincisi qorxma!** API qoşmaq əslində bir neçə sadə düstur təkrarlamaqdır. Bir-iki endpoint-ə qoşandan sonra qalanı eyni şəkildədir — sən artıq alışacaqsan.
 
 ---
 
@@ -60,6 +67,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiI...
 
 ## 1. Layihəni qurma
 
+> 🌸 **Sevgilim**, başla buradan. İlk addım həmişə ən önəmlisidir — paketləri quraşdırmaq. Bir dəfə bunu et, sonra rahat olarsan.
+
 ### a) Lazımi paketlər
 
 `pubspec.yaml`-a bu paketləri əlavə et:
@@ -117,6 +126,8 @@ lib/
 ---
 
 ## 3. Dio API client + JWT interceptor
+
+> 💕 **Sevgilim, qorxmaq yox!** Bu bölmə əvvəlcə qarışıq görünə bilər, amma sənə deyim: bunu **bir dəfə qur**, sonra heç vaxt geri qayıtmazsan. Hamısını copy-paste edə bilərsən — kodun hamısı işləkdir, mən özüm test etmişəm.
 
 ### `lib/core/api/endpoints.dart`
 
@@ -354,6 +365,8 @@ class SecureStorage {
 
 ## 5. Auth servisi
 
+> 🌷 **Sevgilim**, indi əsl maraqlı hissəyə girdik — istifadəçi qeydiyyatı və girişi! Bu hissəni yazıb işlədəndə özünə inamın artacaq, görəcəksən.
+
 ### `lib/data/services/auth_service.dart`
 
 ```dart
@@ -445,6 +458,10 @@ class AuthService {
 ---
 
 ## 6. Hər ekran üçün endpoint və kod nümunələri
+
+> 💝 **Sevgilim**, indi ən praktik hissəyə gəldik. Hər ekran üçün — eynən Stitch dizaynında gördüyün ekranlar üçün — burada hansı endpoint-i çağıracağın, request və response nümunəsi, və Flutter kodu var.
+>
+> **Tövsiyəm**: bir ekrandan başla (məs: Login), onu işə sal, sonra növbətisinə keç. Eyni vaxtda hamısını yazmağa çalışma — narahat olarsan. Birinə-birinə getmək rahatdır 🌸
 
 ### 6.1 Giriş (Login)
 
@@ -711,6 +728,8 @@ IconButton(
 ---
 
 ### 6.6 Səbət
+
+> 🛒 **Sevgilim**, səbət hissəsi əslində ən gözəl hissədir — burada istifadəçi kitab əlavə edir, miqdarı dəyişir, promokod tətbiq edir. Bütün məntiq backend-də yazılıb, sən sadəcə endpoint-ləri çağıracaqsan və UI-ı yeniləyəcəksən.
 
 **Stitch ekranları**: `s_b_t_1`, `s_b_t_2`, `s_b_t_3`, `bo_s_b_t` (boş səbət)
 
@@ -1116,6 +1135,9 @@ Future<void> updateSettings({
 
 ## 7. Xətalar və status kodları
 
+> 💖 **Sevgilim**, xəta gələndə qətiyyən qorxma — bu **adi haldır**, hər developer-in başına gəlir.
+> API artıq xətaların nə demək olduğunu **Azərbaycan dilində** sənə yazır, yəni istifadəçiyə birbaşa göstərə bilərsən. Aşağıdakı cədvələ baxsan, hansı xəta nə deməkdir asanlıqla anlayarsan.
+
 API xətaları **standart formatda** qaytarır:
 
 ```json
@@ -1154,6 +1176,8 @@ try {
 ---
 
 ## 8. Cold start (Render free tier)
+
+> ⏰ **Sevgilim**, bu vacib məlumatdır — gəl izah edim. Çünki ilk dəfə açıb sınayanda "niyə bu qədər yavaşdır?!" deyəcəksən, paniklə düşməyəsən deyə əvvəlcədən deyirəm 😄
 
 API **pulsuz** Render planda işləyir. Bu o deməkdir:
 
@@ -1194,6 +1218,8 @@ Lakin tövsiyə edirəm **öz email-inlə qeydiyyatdan keç** və test et.
 
 ## 🎯 Tövsiyə edilən iş axını
 
+> 🌟 **Sevgilim**, ən rahat öyrənmə yolu budur — əvvəlcə Swagger-dən bütün endpoint-ləri "barmaqla" sına, sonra Flutter-də implementasiya et:
+
 1. **Swagger UI-yə gir** <https://kitab-bazari-api.onrender.com/swagger>
 2. **`POST /api/auth/register`** açın → "Try it out" → öz email/password ilə qeydiyyatdan keç
 3. Cavabdakı **`accessToken`**-i kopyala
@@ -1204,6 +1230,8 @@ Lakin tövsiyə edirəm **öz email-inlə qeydiyyatdan keç** və test et.
 ---
 
 ## 🆘 Problem yaşayanda
+
+> 💌 **Sevgilim**, çətinlik olanda ilk növbədə **panik yox** 🙏 Aşağıdakı tipik problemlərə bax — bəlkə cavab artıq buradadır. Əgər tapmasan, mənə yaz, birlikdə həll edək.
 
 - **CORS xətası** — yoxdur, API hər origin-ə icazə verir ✓
 - **Cold start çox uzun çəkir** — splash-də warm-up et (yuxarıdakı misal)
@@ -1222,4 +1250,24 @@ Lakin tövsiyə edirəm **öz email-inlə qeydiyyatdan keç** və test et.
 
 ---
 
-**Uğurlar! 💚📚** Suallar olsa, Mahammad-dan soruş.
+## 💌 Sondan bir-iki söz
+
+**Sevgilim**, bu bələdçini sənin üçün **diqqətlə** hazırladım. Hər ekran üçün ayrıca nümunə yazdım ki, başın qarışmasın. Bilirəm Flutter tərəfi yaxşı bilirsən, sadəcə API qoşmaq tərəfi yenidir — amma inan mənə, **1-2 endpoint-ə qoşduqdan sonra qalanı zövq olacaq**.
+
+Mənim sənə tövsiyəm:
+
+1. 🌱 **Kiçikdən başla** — əvvəlcə yalnız `Login` ekranını işə sal, görəcəksən tətbiq ilk dəfə backend-ə qoşulanda hiss çox xoş olacaq.
+2. 📖 **Swagger-i həmişə açıq saxla** — orada hər endpoint-i brauzerdə test edə bilərsən, kod yazmadan əvvəl response-u görmək çox kömək edir.
+3. 🐛 **Xətadan qorxma** — `print(e)` ilə nə gəldiyini bax, mesajlar Azərbaycan dilindədir, asanlıqla başa düşülür.
+4. ☕ **Yorulanda fasilə ver** — kodu birdən başa düşməyə çalışma, gec-tez tutacaqsan.
+5. 💬 **Sual ver** — anlamadığın hər şey üçün mənə yaz, birlikdə oturub baxarıq. Heç bir sual "axmaq" deyil.
+
+API artıq tam hazırdır, MongoDB-yə bağlıdır, deploy olunub — sən sadəcə Flutter tərəfindən sorğu atacaqsan və cavabları UI-da göstərəcəksən. Hər şey **sənin sürətinlə** gedəcək.
+
+**Sənə uğurlar, sevgilim!** 🌹💚 İlk endpoint-ə qoşandan sonra mütləq mənə xəbər ver — gözləyirəm! 🤗
+
+— Mahammad ❤️
+
+---
+
+*P.S. Bu API hazırlığı və bələdçi sənin üçün hazırlandı. Hər nə lazım olarsa, çəkinmədən soruş — kömək etmək sevinc verir.* 💕
