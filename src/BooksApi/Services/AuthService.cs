@@ -28,13 +28,22 @@ public class AuthService : IAuthService
     private readonly ITokenService _tokens;
     private readonly JwtSettings _jwt;
     private readonly IWebHostEnvironment _env;
+    private readonly bool _exposeOtpCode;
 
-    public AuthService(MongoDbContext db, ITokenService tokens, IOptions<JwtSettings> jwt, IWebHostEnvironment env)
+    public AuthService(MongoDbContext db, ITokenService tokens, IOptions<JwtSettings> jwt, IWebHostEnvironment env, IConfiguration config)
     {
         _db = db;
         _tokens = tokens;
         _jwt = jwt.Value;
         _env = env;
+
+        // OTP codes are exposed in the response when:
+        //   - running in Development, OR
+        //   - OTP_EXPOSE_CODE=true is set (used while no real email/SMS provider is wired up).
+        var flag = Environment.GetEnvironmentVariable("OTP_EXPOSE_CODE");
+        _exposeOtpCode = env.IsDevelopment()
+                         || string.Equals(flag, "true", StringComparison.OrdinalIgnoreCase)
+                         || string.Equals(flag, "1", StringComparison.OrdinalIgnoreCase);
     }
 
     public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
@@ -118,7 +127,7 @@ public class AuthService : IAuthService
         {
             Target = email,
             ExpiresInSeconds = expiresInSeconds,
-            DevCode = _env.IsDevelopment() && user != null ? code : null
+            DevCode = _exposeOtpCode && user != null ? code : null
         };
     }
 
